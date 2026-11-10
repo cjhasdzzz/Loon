@@ -1,0 +1,29 @@
+#!name = 虎扑去广告
+#!desc = 移除虎扑开屏广告、首页顶部推广、我的页面多余模块及各类横幅推广。
+#!date = 2026-11-10 10:19
+#!author = cjhasdzzz,ZenmoFeiShi
+#!icon = https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/HUPU.png
+#!system_version = 15
+#!loon_version = 3.5.1(998)
+
+[Rewrite]
+# 图库模块
+^https?:\/\/fairy\.mobileapi\.hupu\.com\/gallery\/getmod2 reject-200
+# 红点提示
+^https?:\/\/games\.mobileapi\.hupu\.com\/\d+\/[\d.]+\/bplapi\/reddot\/v\d+\/app\/getReddot reject-dict
+# 热门标签 & 排行榜
+^https?:\/\/bbs\.mobileapi\.hupu\.com\/\d+\/[\d.]+\/(bbsallapi\/tag\/v\d+\/heatTag|bbsrankapi\/v\d+\/rating\/list) reject-dict
+# 搜索提示 & 热搜
+^https?:\/\/games\.mobileapi\.hupu\.com\/\d+\/[\d.]+\/search\/v\d+\/(hintkeylist|hotkeylist) reject-dict
+# 插屏广告
+^https?:\/\/goblin\.hupu\.com\/\d+\/[\d.]+\/interfaceAd\/getOther\/(v\d+|batch) reject-dict
+# 比分Tab & 横幅
+^https?:\/\/games\.mobileapi\.hupu\.com\/\d+\/[\d.]+\/bplcommentapi\/bpl\/score_tab\/groups reject-dict
+^https?:\/\/games\.mobileapi\.hupu\.com\/\d+\/[\d.]+\/bplapi\/banner\/getLocationBanners reject-dict
+
+[Script]
+# 单脚本统一处理：底栏2格精简 + 横幅清空/移除 + 个人主页VIP改造 + 我的页面卡片净化
+response if ${url} ~= /^https?:\/\/(games|fairy|bbs)\.mobileapi\.hupu\.com\/.*(\/nav\/getBottomNav|\/mang\/preview\/banners|\/buffer\/hotList|\/bplapi\/user\/v\d+\/more|\/bbsallapi\/lego\/data)/ then script("https://raw.githubusercontent.com/cjhasdzzz/Loon/main/HUPU_remove_ads.js") with requires_body=true, timeout=10, tag="移除虎扑广告"
+
+[Mitm]
+hostname = games.mobileapi.hupu.com, fairy.mobileapi.hupu.com, bbs.mobileapi.hupu.com, goblin.hupu.com
