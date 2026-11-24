@@ -1,5 +1,5 @@
 /**
- * 扫描全能王响应处理脚本（Loon 适配版 - 完整版）
+ * 扫描全能王响应处理脚本
  */
 const url = (typeof $request !== "undefined" && ($request.url || ($request.request && $request.request.url))) || "";
 const rawBody = (typeof $response !== "undefined" && $response.body) || "";
