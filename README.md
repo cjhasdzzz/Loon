@@ -11,6 +11,6 @@
 
 ## 🙏 特别感谢
 
-* @ZenmoFeiShi
-* @chxm1023
+* [@ZenmoFeiShi](https://github.com/ZenmoFeiShi)
+* [@chxm1023](https://github.com/chxm1023)
 
