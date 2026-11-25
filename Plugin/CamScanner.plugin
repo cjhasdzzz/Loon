@@ -6,7 +6,7 @@
 #!loon_version = 3.5.1(998)
 
 [Script]
-response if ${url} ~= /^https?:\/\/[^\/]+\.(intsig\.net|camscanner\.com)\// then script("https://raw.githubusercontent.com/cjhasdzzz/Loon/main/CamScanner.js") with requires_body=true, timeout=10, tag="CamScanner"
+response if ${url} ~= /^https?:\/\/[^\/]+\.(intsig\.net|camscanner\.com)\// then script("https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/CamScanner.js") with requires_body=true, timeout=10, tag="CamScanner"
 
 [MitM]
 hostname = *.camscanner.com, *.intsig.net
