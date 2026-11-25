@@ -22,7 +22,7 @@
 
 [Script]
 # 单脚本统一处理：底栏2格精简 + 横幅清空/移除 + 个人主页VIP改造 + 我的页面卡片净化
-response if ${url} ~= /^https?:\/\/(games|fairy|bbs)\.mobileapi\.hupu\.com\/.*(\/nav\/getBottomNav|\/mang\/preview\/banners|\/buffer\/hotList|\/bplapi\/user\/v\d+\/more|\/bbsallapi\/lego\/data)/ then script("https://raw.githubusercontent.com/cjhasdzzz/Loon/main/HUPU_remove_ads.js") with requires_body=true, timeout=10, tag="移除虎扑广告"
+response if ${url} ~= /^https?:\/\/(games|fairy|bbs)\.mobileapi\.hupu\.com\/.*(\/nav\/getBottomNav|\/mang\/preview\/banners|\/buffer\/hotList|\/bplapi\/user\/v\d+\/more|\/bbsallapi\/lego\/data)/ then script("https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Hupu.js") with requires_body=true, timeout=10, tag="移除虎扑广告"
 
 [Mitm]
 hostname = games.mobileapi.hupu.com, fairy.mobileapi.hupu.com, bbs.mobileapi.hupu.com, goblin.hupu.com
