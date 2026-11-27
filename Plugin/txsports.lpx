@@ -3,8 +3,18 @@
 #!author = cjhasdzzz[https://github.com/cjhasdzzz], ZenmoFeiShi[https://t.me/ZenmoFeiShi]
 #!icon = https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/03CNSoft/tengxuntiyu.png
 #!homepage = https://github.com/cjhasdzzz/Loon
-#!date = 2026-11-27 23:25
+#!date = 2026-11-28 00:40
 #!loon_version = 3.5.1(998)
+
+[Rule]
+# 拦截腾讯体育 QUIC / UDP 443，强制回落 TCP HTTPS 以便 MITM 解密
+AND,((DOMAIN-SUFFIX,sports.qq.com),(PROTOCOL,QUIC)),REJECT
+AND,((DOMAIN-SUFFIX,sports.qq.com),(PROTOCOL,UDP),(DEST-PORT,443)),REJECT
+# 拦截腾讯 HTTPDNS，防止直连 IP 绕过 MITM
+DOMAIN,httpdns.qq.com,REJECT
+IP-CIDR,119.29.29.29/32,REJECT,no-resolve
+IP-CIDR,119.29.29.98/32,REJECT,no-resolve
+IP-CIDR,119.29.29.99/32,REJECT,no-resolve
 
 [Script]
 # 开屏广告与青少年弹窗配置（Protobuf 二进制响应，必须开启 binary-body-mode=true）
@@ -19,10 +29,8 @@ http-response ^https?:\/\/app\.sports\.qq\.com\/init\/config(?:\?.*)?$ script-pa
 # 我的页面模块精简
 http-response ^https?:\/\/app\.sports\.qq\.com\/user\/homePageV2(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-我的页面净化
 
-# 直播数量角标
+# 直播数量角标（如看直播遇比分/播放卡顿，可删掉下面这两条）
 http-response ^https?:\/\/app\.sports\.qq\.com\/m\/match\/liveSum(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-直播角标净化
-
-# 赛事多端更新浮层
 http-response ^https?:\/\/app\.sports\.qq\.com\/match\/multiUpdate(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-赛事更新净化
 
 # 首页与列表广告、热词、热门赛事条、金币图标
