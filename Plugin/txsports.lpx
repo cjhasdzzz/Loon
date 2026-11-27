@@ -6,13 +6,11 @@
 #!loon_version = 3.5.1(998)
 
 [Rule]
-# 仅将 4 个轻量配置与广告接口走代理（视频直播流仍走国内直连）
 DOMAIN,app.sports.qq.com,PROXY
 DOMAIN,sports.ssp.qq.com,PROXY
 DOMAIN,config.ab.qq.com,PROXY
 DOMAIN,k.ssp.qq.com,PROXY
 
-# 拦截腾讯 HTTPDNS，防止直连 IP 绕过 MITM
 DOMAIN,httpdns.qq.com,REJECT
 IP-CIDR,119.29.29.29/32,REJECT,no-resolve
 IP-CIDR,119.29.29.98/32,REJECT,no-resolve
