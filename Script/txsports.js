@@ -1,6 +1,5 @@
 /*
  * 腾讯体育净化
- * 适配 Loon Script v2：binary-body-mode=true、$response.status、http-request/http-response 协同
  */
 (function () {
   var SSP_HIT_KEY = "txsports_ssp_target_hit_ts";
