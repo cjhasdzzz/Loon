@@ -18,27 +18,27 @@ IP-CIDR,119.29.29.99/32,REJECT,no-resolve
 
 [Script]
 # 开屏广告与青少年弹窗配置（Protobuf 二进制响应，必须开启 binary-body-mode=true）
-http-response ^https?:\/\/config\.ab\.qq\.com\/tab\/GetTabRemoteConfig(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, binary-body-mode=true, timeout=10, tag=腾讯体育-开屏与青少年配置
+http-response ^https?:\/\/config\.ab\.qq\.com\/tab\/GetTabRemoteConfig(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, binary-body-mode=true, timeout=10, tag=腾讯体育-开屏与青少年配置
 
 # SDK 广告总开关（XML/Plist）
-http-response ^https?:\/\/k\.ssp\.qq\.com\/getsdkconfig(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-SDK广告配置
+http-response ^https?:\/\/k\.ssp\.qq\.com\/getsdkconfig(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-SDK广告配置
 
 # 底部中间会员 Tab
-http-response ^https?:\/\/app\.sports\.qq\.com\/init\/config(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-底部会员Tab
+http-response ^https?:\/\/app\.sports\.qq\.com\/init\/config(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-底部会员Tab
 
 # 我的页面模块精简
-http-response ^https?:\/\/app\.sports\.qq\.com\/user\/homePageV2(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-我的页面净化
+http-response ^https?:\/\/app\.sports\.qq\.com\/user\/homePageV2(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-我的页面净化
 
 # 直播数量角标与赛事多端更新浮层
-http-response ^https?:\/\/app\.sports\.qq\.com\/m\/match\/liveSum(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-直播角标净化
-http-response ^https?:\/\/app\.sports\.qq\.com\/match\/multiUpdate(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-赛事更新净化
+http-response ^https?:\/\/app\.sports\.qq\.com\/m\/match\/liveSum(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-直播角标净化
+http-response ^https?:\/\/app\.sports\.qq\.com\/match\/multiUpdate(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-赛事更新净化
 
 # 首页与列表广告、热词、热门赛事条、金币图标
-http-response ^https?:\/\/app\.sports\.qq\.com\/feeds\/(?:home|list)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-首页与信息流净化
+http-response ^https?:\/\/app\.sports\.qq\.com\/feeds\/(?:home|list)(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-首页与信息流净化
 
 # 信息流 SSP 广告（请求阶段标记目标参数，响应阶段清空广告单）
-http-request ^https?:\/\/sports\.ssp\.qq\.com\/app(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-SSP请求标记
-http-response ^https?:\/\/sports\.ssp\.qq\.com\/app(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/txsports.js, requires-body=true, timeout=10, tag=腾讯体育-SSP广告净化
+http-request ^https?:\/\/sports\.ssp\.qq\.com\/app(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-SSP请求标记
+http-response ^https?:\/\/sports\.ssp\.qq\.com\/app(?:\?.*)?$ script-path=https://raw.githubusercontent.com/cjhasdzzz/Loon/refs/heads/main/Script/TencentSports.js, requires-body=true, timeout=10, tag=腾讯体育-SSP广告净化
 
 [MITM]
 hostname = config.ab.qq.com, k.ssp.qq.com, app.sports.qq.com, sports.ssp.qq.com
